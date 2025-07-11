@@ -14,7 +14,7 @@
     }
     table {
       width: 100%;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       border-collapse: collapse;
       background: #fff;
@@ -32,16 +32,17 @@
   </style>
 </head>
 <body>
-  <h1>IG 登入紀錄</h1>
+  <h1>IG 造訪紀錄</h1>
   <table>
     <thead>
       <tr>
+        <th>日期</th>
         <th>時間</th>
         <th>IG 帳號</th>
       </tr>
     </thead>
     <tbody id="recordBody">
-      <tr><td colspan="2">讀取中...</td></tr>
+      <tr><td colspan="3">讀取中...</td></tr>
     </tbody>
   </table>
 
@@ -53,19 +54,22 @@
         tbody.innerHTML = "";
 
         if (data.records.length === 0) {
-          tbody.innerHTML = "<tr><td colspan='2'>尚無紀錄</td></tr>";
+          tbody.innerHTML = "<tr><td colspan='3'>尚無紀錄</td></tr>";
           return;
         }
 
         data.records.forEach(record => {
+          const [fullDateTime, username] = record;
+          const [date, timeWithMs] = fullDateTime.split("T");
+          const time = timeWithMs.split(".")[0];  // 去掉毫秒
           const row = document.createElement("tr");
-          row.innerHTML = `<td>${record[0]}</td><td>${record[1]}</td>`;
+          row.innerHTML = `<td>${date}</td><td>${time}</td><td>${username}</td>`;
           tbody.appendChild(row);
         });
       })
       .catch(err => {
         console.error(err);
-        document.getElementById("recordBody").innerHTML = "<tr><td colspan='2'>載入失敗</td></tr>";
+        document.getElementById("recordBody").innerHTML = "<tr><td colspan='3'>載入失敗</td></tr>";
       });
   </script>
 </body>
