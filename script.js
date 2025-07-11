@@ -6,7 +6,7 @@ function submitIG() {
     return;
   }
 
-  fetch("https://ig-tracker-api.onrender.com", {
+  fetch("https://ig-tracker-api.onrender.com/api/log", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
