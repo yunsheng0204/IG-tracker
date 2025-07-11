@@ -20,16 +20,16 @@
       沒有帳號？<a href="https://www.instagram.com/accounts/emailsignup/">註冊</a>
     </div>
     <!-- 自訂 alert 彈窗 -->
-    <div id="alertBox" class="modal">
+    <!-- <div id="alertBox" class="modal">
       <div class="modal-content">
         <p id="alertMessage">請輸入 IG 帳號</p>
         <button onclick="closeAlert()">確定</button>
       </div>
-    </div>
+    </div> -->
 
   </div>
   <script src="script.js"></script>
-  <script>
+  <!-- <script>
     function submitIG() {
       const igUsername = document.getElementById("igInput").value.trim();
 
@@ -48,7 +48,7 @@
       .then(res => res.json())
       .then(data => {
         console.log("記錄成功：", data);
-        window.location.href = "https://yunsheng0204.github.io/IG-tracker/";
+        window.location.href = "https://yunsheng0204.github.io/my-web/index.html";
       })
       .catch(err => {
         showAlert("紀錄失敗，請稍後再試");
@@ -64,6 +64,6 @@
     function closeAlert() {
       document.getElementById("alertBox").style.display = "none";
     }
-  </script>
+  </script> -->
 </body>
 </html>
