@@ -6,9 +6,20 @@ function submitIG() {
     return;
   }
 
-  // 👉 在這裡可以改成送到後端或紀錄
-  console.log("IG Username:", igUsername);
-
-  // ✅ 轉向你指定的頁面
-  window.location.href = "https://yunsheng0204.github.io/my-web/index.html";
+  fetch("https://ig-tracker-api.onrender.com", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ username: igUsername })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("記錄成功：", data);
+    window.location.href = "https://yunsheng0204.github.io/IG-tracker/";
+  })
+  .catch(err => {
+    alert("記錄失敗");
+    console.error(err);
+  });
 }
