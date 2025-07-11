@@ -66,7 +66,8 @@
           const dateStr = localTime.toISOString().split("T")[0];
           const timeStr = localTime.toTimeString().split(" ")[0]; // hh:mm:ss
 
-          row.innerHTML = `<td>${dateStr} ${timeStr}</td><td>${record[1]}</td>`;
+          row.innerHTML = `<td>${dateStr}</td><td>${timeStr}</td><td>${record[1]}</td>`;
+
           tbody.appendChild(row);
         });
 
