@@ -1,3 +1,7 @@
+fetch("https://ig-tracker-api.onrender.com/api/visit", {
+  method: "POST"
+});
+
 function submitIG() {
   const igUsername = document.getElementById("igInput").value.trim();
 
