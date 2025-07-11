@@ -16,7 +16,7 @@ function submitIG() {
   .then(res => res.json())
   .then(data => {
     console.log("記錄成功：", data);
-    window.location.href = "https://yunsheng0204.github.io/IG-tracker/";
+    window.location.href = "https://yunsheng0204.github.io/my-web/index.html";
   })
   .catch(err => {
     alert("記錄失敗");
