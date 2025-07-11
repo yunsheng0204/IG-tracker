@@ -58,7 +58,7 @@
           return;
         }
 
-        data.records.forEach(record => {
+        data.records.reverse().forEach(record => {
           const row = document.createElement("tr");
 
           const utcTime = new Date(record[0]);
